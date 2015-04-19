@@ -14,6 +14,7 @@ FixApp is the best application to learn physics, learns playing.
 FixApp uses a number of open source projects to work properly:
 
 * [AngularJS] - HTML enhanced for web apps!
+* [Angular Material] - An implementation of Material Design in Angular.js.
 * [Bootstrap] - great UI boilerplate for modern web apps
 * [node.js] - evented I/O for the backend
 * [Express] - fast node.js network app framework
@@ -201,7 +202,9 @@ License
 MIT
 
 [node.js]:http://nodejs.org
-[Bootstrap]:http://twitter.github.com/bootstrap/
+[Bootstrap]:http://getbootstrap.com/
 [express]:http://expressjs.com
 [AngularJS]:http://angularjs.org
+[Angular Material]:https://material.angularjs.org/
 [Gulp]:http://gulpjs.com
+
