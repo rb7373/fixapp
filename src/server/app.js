@@ -36,7 +36,9 @@ app.get('/ping', function(req, res, next) {
 
 switch (environment) {
     case 'build':
+        app.set('views', './views');
         console.log('** BUILD **');
+        app.set('view engine', 'jade');
         app.use(express.static('./build/'));
         // Any invalid calls for templateUrls are under app/* and should return 404
         app.use('/app/*', function(req, res, next) {
@@ -47,9 +49,12 @@ switch (environment) {
         break;
     default:
         console.log('** DEV **');
+        app.set('views', './views');
+        app.set('view engine', 'jade');
         app.use(express.static('./src/client/'));
         app.use(express.static('./'));
         app.use(express.static('./tmp'));
+
         // All the assets are served at this point.
         // Any invalid calls for templateUrls are under app/* and should return 404
         app.use('/app/*', function(req, res, next) {
