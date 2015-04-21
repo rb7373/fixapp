@@ -1,0 +1,1 @@
+angular.module("app.core").run(["$templateCache", function($templateCache) {$templateCache.put("app/physics/animation.html","<div>Animation 2</div>");}]);

@@ -26,7 +26,8 @@ module.exports = function() {
         css: temp + 'styles.css',
         fonts: bower.directory + 'font-awesome/fonts/**/*.*',
         html: client + '**/*.html',
-        htmltemplates: clientApp + '**/*.html',
+        htmlTemplates: clientApp + '**/*.html',
+        jade: client + '**/*.jade',
         images: client + 'images/**/*.*',
         index: client + 'index.html',
         // app js, with no specs

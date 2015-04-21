@@ -27,12 +27,14 @@
 </head>
 <body>
     <div>
-
+        <div ui-view></div>
     </div>
 
     <!-- build:js js/lib.js -->
     <!-- bower:js -->
+    <script src="/bower_components/physicsjs/dist/physicsjs-full.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -40,6 +42,16 @@
     <!-- inject:js -->
 
     <script src="/src/client/app/app.module.js"></script>
+
+    <script src="/src/client/app/core/core.module.js"></script>
+
+    <script src="/src/client/app/physics/physics.module.js"></script>
+
+    <script src="/src/client/app/widgets/widgets.module.js"></script>
+
+    <script src="/src/client/app/physics/constants.js"></script>
+
+    <script src="/src/client/app/physics/movingObjects.js"></script>
 
     <!-- endinject -->
 

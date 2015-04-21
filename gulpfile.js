@@ -54,6 +54,18 @@ gulp.task('plato', function(done) {
     startPlatoVisualizer(done);
 });
 
+gulp.task('jade', function() {
+    log('Compiling Jade --> Html');
+    gulp.src(config.jade)
+        .pipe($.jade())
+        .pipe(gulp.dest(config.client))
+});
+
+gulp.task('jade-watcher', function() {
+    gulp.watch([config.jade], ['jade']);
+});
+
+
 /**
  * Compile less to css
  * @return {Stream}
@@ -95,8 +107,8 @@ gulp.task('images', ['clean-images'], function() {
         .pipe(gulp.dest(config.build + 'images'));
 });
 
-gulp.task('stylus-watcher', function() {
-    gulp.watch([config.stylus], ['styles']);
+gulp.task('less-watcher', function() {
+    gulp.watch([config.less], ['styles']);
 });
 
 /**
@@ -107,7 +119,7 @@ gulp.task('templatecache', ['clean-code'], function() {
     log('Creating an AngularJS $templateCache');
 
     return gulp
-        .src(config.htmltemplates)
+        .src(config.htmlTemplates)
         .pipe($.if(args.verbose, $.bytediff.start()))
         .pipe($.minifyHtml({empty: true}))
         .pipe($.if(args.verbose, $.bytediff.stop(bytediffFormatter)))
@@ -138,7 +150,7 @@ gulp.task('wiredep', function() {
         .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
+gulp.task('inject', ['jade', 'wiredep', 'styles', 'templatecache'], function() {
     log('Wire up css into the html, after files are ready');
 
     return gulp
@@ -451,6 +463,8 @@ function startBrowserSync(isDev, specRunner) {
     // If build: watches the files, builds, and restarts browser-sync.
     // If dev: watches less, compiles it to css, browser-sync handles reload
     if (isDev) {
+        gulp.watch([config.jade], ['jade'])
+            .on('change', changeEvent);
         gulp.watch([config.less], ['styles'])
             .on('change', changeEvent);
     } else {
